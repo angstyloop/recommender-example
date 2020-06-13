@@ -48,7 +48,7 @@ critics = {
     'Toby': {
         'Snakes on a Plane': 4.5,
         'Superman Returns': 4.0,
-        'You, Me and Dupree': 1.0,
+        'You, Me and Dupree': 1.0
     }
 }
 
@@ -107,10 +107,10 @@ def get_recommendations(preferences, person, similarity_function=sim_pearson):
                 totals[item] += preferences[other][item] * similarity
                 similarity_sums.setdefault(item, 0)
                 similarity_sums[item] += similarity
-        rankings = [(totals[item] / similarity_sums[item], item) for item, total in totals.items()]
-        rankings.sort()
-        rankings.reverse()
-        return rankings
+    rankings = [(total / similarity_sums[item], item) for item, total in totals.items()]
+    rankings.sort()
+    rankings.reverse()
+    return rankings
 
 
 def transform_preferences(preferences):
